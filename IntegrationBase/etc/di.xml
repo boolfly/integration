@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+ /************************************************************
+ * *
+ *  * Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  *
+ *  * @author    info@boolfly.com
+ * *  @project   Boolfly Integration
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Boolfly\IntegrationBase\Model\Service\Command\CommandPoolInterface" type="Boolfly\IntegrationBase\Model\Service\Command\CommandPool"/>
+    <preference for="Boolfly\IntegrationBase\Model\Service\Validator\ResultInterface" type="Boolfly\IntegrationBase\Model\Service\Validator\Result"/>
+    <virtualType name="Boolfly\IntegrationBase\Model\Logger\VirtualDebug" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/bf_integration.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Boolfly\IntegrationBase\Model\Logger\VirtualLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Boolfly\IntegrationBase\Model\Logger\VirtualDebug</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Boolfly\IntegrationBase\Model\Logger\Logger">
+        <arguments>
+            <argument name="logger" xsi:type="object">Boolfly\IntegrationBase\Model\Logger\VirtualLogger</argument>
+        </arguments>
+    </type>
+</config>

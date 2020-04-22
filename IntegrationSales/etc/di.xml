@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+ /************************************************************
+ * *
+ *  * Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  *
+ *  * @author    info@boolfly.com
+ * *  @project   Boolfly Integration
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Boolfly\IntegrationSales\Model\Order\Invoker">
+        <arguments>
+            <argument name="invoker" xsi:type="object">OrderInvoker</argument>
+        </arguments>
+    </type>
+    <virtualType name="OrderInvoker" type="Boolfly\IntegrationSales\Model\Invoker">
+        <arguments>
+            <argument name="commandPool" xsi:type="object">OrderCommand</argument>
+            <argument name="config" xsi:type="object">OrderConfig</argument>
+            <argument name="code" xsi:type="const">Boolfly\IntegrationSales\Model\Sales::ORDER_ENTITY</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="OrderCommand" type="Boolfly\IntegrationBase\Model\Service\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="order" xsi:type="string">OrderIntegrationCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="OrderIntegrationCommand" type="Boolfly\IntegrationBase\Model\Service\Command\ServiceCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">Boolfly\IntegrationSales\Model\Service\Request\Builder</argument>
+            <argument name="transferFactory" xsi:type="object">Boolfly\IntegrationSales\Model\Service\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">OrderZendHttpClient</argument>
+            <argument name="handler" xsi:type="object">Boolfly\IntegrationSales\Model\Service\Response\StatusHandler</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="OrderLogger" type="Boolfly\IntegrationBase\Model\Logger\Logger">
+        <arguments>
+            <argument name="config" xsi:type="object">OrderConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="OrderZendHttpClient" type="Boolfly\IntegrationBase\Model\Service\Http\Client\Zend">
+        <arguments>
+            <argument name="logger" xsi:type="object">OrderLogger</argument>
+            <argument name="converter" xsi:type="object">Boolfly\IntegrationSales\Model\Service\Http\Converter\JsonToArray</argument>
+        </arguments>
+    </virtualType>
+    <type name="Boolfly\IntegrationSales\Model\Order\Mapping">
+        <arguments>
+            <argument name="config" xsi:type="object">OrderConfig</argument>
+        </arguments>
+    </type>
+    <type name="Boolfly\IntegrationSales\Model\Service\Helper\Authorization">
+        <arguments>
+            <argument name="config" xsi:type="object">OrderConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="OrderConfig" type="Boolfly\IntegrationBase\Model\Service\Config\Config">
+        <arguments>
+            <argument name="integrationType" xsi:type="const">Boolfly\IntegrationSales\Model\Sales::ORDER_ENTITY</argument>
+        </arguments>
+    </virtualType>
+    <!-- Order integration command -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="bf_order_integration_command" xsi:type="object">Boolfly\IntegrationSales\Console\Command\OrderIntegration</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

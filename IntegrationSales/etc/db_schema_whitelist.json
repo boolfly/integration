@@ -1,0 +1,18 @@
+{
+    "bf_integration_sales": {
+        "column": {
+            "id": true,
+            "entity_type": true,
+            "entity_id": true,
+            "status": true,
+            "data": true,
+            "messages": true,
+            "created_at": true,
+            "executed_at": true,
+            "finished_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

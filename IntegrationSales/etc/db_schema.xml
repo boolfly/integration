@@ -1,0 +1,28 @@
+<!--
+ /************************************************************
+ * *
+ *  * Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  *
+ *  * @author    info@boolfly.com
+ * *  @project   Boolfly Integration
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="bf_integration_sales" resource="default" engine="innodb" comment="Boolfly Integration Sales">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="Entity Id" identity="true"/>
+        <column xsi:type="varchar" name="entity_type" nullable="false" length="255" comment="Entity Type"/>
+        <column xsi:type="varchar" name="entity_id" nullable="true" length="32" comment="Entity Id"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="7" default="pending" comment="Status"/>
+        <column xsi:type="text" name="data" nullable="false" comment="Data"/>
+        <column xsi:type="text" name="messages" nullable="true" comment="Messages"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="executed_at" on_update="false" nullable="true" comment="Executed At"/>
+        <column xsi:type="timestamp" name="finished_at" on_update="false" nullable="true" comment="Finished At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

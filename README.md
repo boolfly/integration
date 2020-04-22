@@ -6,7 +6,7 @@ This bundle modules are not available for composer for now. Before installing th
 
 `composer require boolfly/module-base`
 
-Then, download them, put all under `app/Boollfy` folder.
+Then, download them, put all under `app/Boolfly` folder.
 
 
 ## Technical Guide

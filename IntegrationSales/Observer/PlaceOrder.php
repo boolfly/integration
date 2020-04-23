@@ -46,15 +46,17 @@ class PlaceOrder implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        /** @var Order $order */
-        $order = $observer->getEvent()->getData('order');
-        /** @var Sales $salesOrder */
-        $salesOrder = $this->salesFactory->create();
-        /*
-         * We can add our custom mapping logic
-         */
-        $data  = $this->mapping->map($order);
-        $salesOrder->addData($data);
-        $salesOrder->save();
+        if ($this->mapping->isEnabled()) {
+            /** @var Order $order */
+            $order = $observer->getEvent()->getData('order');
+            /** @var Sales $salesOrder */
+            $salesOrder = $this->salesFactory->create();
+            /*
+             * We can add our custom mapping logic
+             */
+            $data  = $this->mapping->map($order);
+            $salesOrder->addData($data);
+            $salesOrder->save();
+        }
     }
 }

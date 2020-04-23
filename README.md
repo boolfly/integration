@@ -30,6 +30,7 @@ We need to follow Magento coding standard: https://devdocs.magento.com/guides/v2
   <li>Use Queue</li>
   <li>Implementing catalog: product and category </li>
   <li>Customer integration</li>
+  <li>Supporting Soap</li>
 </ul>
 
 ## User Guide
@@ -37,5 +38,11 @@ We need to follow Magento coding standard: https://devdocs.magento.com/guides/v2
 We can map the fields between Magento and Integration platform. **STORES > Configuration > BOOLFLY > Integration > Order Integration General Settings**
 
 ![Boolfly Integration Sales mapping fields](https://github.com/boolfly/wiki/blob/master/magento/magento2/images/integration/integration-sales-01.png)
-
-
+<ul>
+  <li>Enabled: enabled/disabled order integration</li>
+  <li>External Url: API url of integration system</li>
+  <li>Username: API authentication username</li>
+  <li>Password: API authentication password</li>
+  <li>Mapping Fields: the basic mapping fields between Magento and integration system</li>
+  <li>Debug: enabled/disabled integration log</li>
+</ul>

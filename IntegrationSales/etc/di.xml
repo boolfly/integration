@@ -45,7 +45,6 @@
     <virtualType name="OrderZendHttpClient" type="Boolfly\IntegrationBase\Model\Service\Http\Client\Zend">
         <arguments>
             <argument name="logger" xsi:type="object">OrderLogger</argument>
-            <argument name="converter" xsi:type="object">Boolfly\IntegrationSales\Model\Service\Http\Converter\JsonToArray</argument>
         </arguments>
     </virtualType>
     <type name="Boolfly\IntegrationSales\Model\Order\Mapping">

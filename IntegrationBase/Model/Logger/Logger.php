@@ -11,6 +11,7 @@ namespace Boolfly\IntegrationBase\Model\Logger;
 
 use Boolfly\IntegrationBase\Model\Service\ConfigInterface;
 use Psr\Log\LoggerInterface;
+
 /**
  * Class Logger
  * @package Boolfly\IntegrationBase\Model\Logger

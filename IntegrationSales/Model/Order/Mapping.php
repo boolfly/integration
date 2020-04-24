@@ -70,4 +70,12 @@ class Mapping
             'data' => $this->serializer->serialize($data)
         ];
     }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->config->isSetFlag('enable');
+    }
 }

@@ -34,6 +34,7 @@ We need to follow Magento coding standard: https://devdocs.magento.com/guides/v2
 
 ## User Guide
 
+### 1. Order Integration
 We can map the fields between Magento and Integration platform. **STORES > Configuration > BOOLFLY > Integration > Order Integration General Settings**
 
 ![Boolfly Integration Sales mapping fields](https://github.com/boolfly/wiki/blob/master/magento/magento2/images/integration/integration-sales-01.png)

@@ -30,7 +30,6 @@ We need to follow Magento coding standard: https://devdocs.magento.com/guides/v2
   <li>Use Queue</li>
   <li>Implementing catalog: product and category </li>
   <li>Customer integration</li>
-  <li>Supporting Soap</li>
 </ul>
 
 ## User Guide

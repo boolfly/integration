@@ -7,18 +7,13 @@
  *  * @author    info@boolfly.com
  * *  @project   Boolfly Integration
  */
-namespace Boolfly\IntegrationSales\Model\Service\Http\Converter;
+namespace Boolfly\IntegrationBase\Model\Service\Http\Converter;
 
-use Magento\Framework\Serialize\Serializer\Json;
 use Boolfly\IntegrationBase\Model\Service\Http\ConverterException;
 use Boolfly\IntegrationBase\Model\Service\Http\ConverterInterface;
+use Magento\Framework\Serialize\Serializer\Json;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class JsonToArray
- *
- * @package Boolfly\IntegrationSales\Gateway\Http\Converter
- */
 class JsonToArray implements ConverterInterface
 {
     /**
@@ -46,7 +41,7 @@ class JsonToArray implements ConverterInterface
     }
 
     /**
-     * Converts gateway response to array structure
+     * Converts response to array structure
      *
      * @param mixed $response
      * @return array

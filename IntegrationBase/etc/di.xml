@@ -12,6 +12,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Boolfly\IntegrationBase\Model\Service\Command\CommandPoolInterface" type="Boolfly\IntegrationBase\Model\Service\Command\CommandPool"/>
     <preference for="Boolfly\IntegrationBase\Model\Service\Validator\ResultInterface" type="Boolfly\IntegrationBase\Model\Service\Validator\Result"/>
+    <type name="Boolfly\IntegrationBase\Model\Service\Http\Client\Zend">
+        <arguments>
+            <argument name="converter" xsi:type="object">Boolfly\IntegrationBase\Model\Service\Http\Converter\JsonToArray</argument>
+        </arguments>
+    </type>
     <virtualType name="Boolfly\IntegrationBase\Model\Logger\VirtualDebug" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">/var/log/bf_integration.log</argument>

@@ -47,7 +47,7 @@
             <argument name="logger" xsi:type="object">OrderLogger</argument>
         </arguments>
     </virtualType>
-    <type name="Boolfly\IntegrationSales\Model\Order\Mapping">
+    <type name="Boolfly\IntegrationSales\Model\Order\Mapper">
         <arguments>
             <argument name="config" xsi:type="object">OrderConfig</argument>
         </arguments>

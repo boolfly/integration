@@ -9,7 +9,7 @@
  */
 namespace Boolfly\IntegrationSales\Observer;
 
-use Boolfly\IntegrationSales\Model\Order\Mapping;
+use Boolfly\IntegrationSales\Model\Order\Mapper;
 use Boolfly\IntegrationSales\Model\Sales;
 use Boolfly\IntegrationSales\Model\SalesFactory;
 use Magento\Framework\Event\Observer;
@@ -24,21 +24,21 @@ class PlaceOrder implements ObserverInterface
     private $salesFactory;
 
     /**
-     * @var Mapping
+     * @var Mapper
      */
-    private $mapping;
+    private $mapper;
 
     /**
      * PlaceOrder constructor.
      * @param SalesFactory $salesFactory
-     * @param Mapping $mapping
+     * @param Mapper $mapper
      */
     public function __construct(
         SalesFactory $salesFactory,
-        Mapping $mapping
+        Mapper $mapper
     ) {
         $this->salesFactory = $salesFactory;
-        $this->mapping = $mapping;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -46,7 +46,7 @@ class PlaceOrder implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->mapping->isEnabled()) {
+        if ($this->mapper->isEnabled()) {
             /** @var Order $order */
             $order = $observer->getEvent()->getData('order');
             /** @var Sales $salesOrder */
@@ -54,7 +54,7 @@ class PlaceOrder implements ObserverInterface
             /*
              * We can add our custom mapping logic
              */
-            $data  = $this->mapping->map($order);
+            $data  = $this->mapper->map($order);
             $salesOrder->addData($data);
             $salesOrder->save();
         }

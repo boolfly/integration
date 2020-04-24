@@ -15,7 +15,7 @@ use Magento\Sales\Model\Order;
 use Magento\Framework\Serialize\SerializerInterface;
 use Boolfly\IntegrationBase\Model\Service\ConfigInterface;
 
-class Mapping
+class Mapper
 {
     /**
      * @var SerializerInterface
